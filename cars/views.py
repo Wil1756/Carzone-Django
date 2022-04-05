@@ -7,13 +7,13 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def cars(request):
-    cars = Car.objects.order_by('-created_date')
-    paginator = Paginator(cars ,2)
-    page = request.GET.get('page')
-    paged_cars = paginator.get_page(page)
-    model_search = Car.objects.values_list('model', flat=True).distinct()
-    city_search = Car.objects.values_list('city', flat=True).distinct()
-    year_search = Car.objects.values_list('year', flat=True).distinct()
+    cars              = Car.objects.order_by('-created_date')
+    paginator         = Paginator(cars ,2)
+    page              = request.GET.get('page')
+    paged_cars        = paginator.get_page(page)
+    model_search      = Car.objects.values_list('model', flat=True).distinct()
+    city_search       = Car.objects.values_list('city', flat=True).distinct()
+    year_search       = Car.objects.values_list('year', flat=True).distinct()
     body_style_search = Car.objects.values_list('body_style', flat=True).distinct()
     
 
@@ -35,11 +35,11 @@ def car_detail(request,id):
     return render(request,'cars/car_detail.html',data)
 
 def search(request):
-    cars = Car.objects.order_by('-created_date')
-    model_search = Car.objects.values_list('model', flat=True).distinct()
-    city_search = Car.objects.values_list('city', flat=True).distinct()
-    year_search = Car.objects.values_list('year', flat=True).distinct()
-    body_style_search = Car.objects.values_list('body_style', flat=True).distinct()
+    cars                = Car.objects.order_by('-created_date')
+    model_search        = Car.objects.values_list('model', flat=True).distinct()
+    city_search         = Car.objects.values_list('city', flat=True).distinct()
+    year_search         = Car.objects.values_list('year', flat=True).distinct()
+    body_style_search   = Car.objects.values_list('body_style', flat=True).distinct()
     transmission_search = Car.objects.values_list('transmission', flat=True).distinct()
 
     if 'keyword' in request.GET:
